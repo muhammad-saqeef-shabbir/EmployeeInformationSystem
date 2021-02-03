@@ -1,6 +1,7 @@
+--------------------------------------------------------- Date Added: 03-February-2021 (Muhammad Saqeef Shabbir) ------------------------------------------------------------------
 DROP TABLE IF EXISTS employee;
 
-CREATE TABLE IF NOT EXISTS Employee_tl (
+CREATE TABLE Employee_tl (
         id Serial NOT NULL,
      	name VARCHAR(100),
      	cnic VARCHAR(15),

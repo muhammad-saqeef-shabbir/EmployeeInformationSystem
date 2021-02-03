@@ -1,43 +1,27 @@
 package com.EIS.EmployeeInformationSystem.service;
 
-import com.EIS.EmployeeInformationSystem.dao.IEmployeeDao;
-import com.EIS.EmployeeInformationSystem.model.Employee;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
-import org.springframework.stereotype.Service;
-
-import java.time.LocalDate;
-import java.util.List;
-import java.util.Optional;
-import java.util.UUID;
-
-@Service
 public class EmployeeService {
 
-    private final IEmployeeDao employeeDao;
-
-    @Autowired
-    public EmployeeService(IEmployeeDao employeeDao) {
-        this.employeeDao = employeeDao;
-    }/*@Qualifier("postgres")*/
+    /*@Autowired
+    private IEmployeeDao employeeDao;
 
     public int addEmployee(Employee employee) {
         return employeeDao.insertEmployee(employee);
     }
 
-    public List<Employee> getAllPeople() {
-        return employeeDao.selectAllPeople();
+    public List<Employee> getAllEmployees() {
+        return employeeDao.selectAllEmployees();
     }
 
-    public Optional<Employee> getEmployeeById(UUID id) {
+    public Optional<Employee> getEmployeeById(Integer id) {
         return employeeDao.selectEmployeeById(id);
     }
 
-    public List<Employee> deleteEmployeeById(UUID id) {
+    public List<Employee> deleteEmployeeById(Integer id) {
         return employeeDao.deleteEmployeeById(id);
     }
 
     public int updateEmployeeById(Employee newEmployee) {
         return employeeDao.updateEmployeeById(newEmployee);
-    }
+    }*/
 }

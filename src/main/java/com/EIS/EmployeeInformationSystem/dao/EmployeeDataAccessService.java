@@ -1,68 +1,63 @@
 package com.EIS.EmployeeInformationSystem.dao;
 
 import com.EIS.EmployeeInformationSystem.model.Employee;
+import com.EIS.EmployeeInformationSystem.respository.EmployeeRepository;
 import io.ebean.Ebean;
 import io.ebean.EbeanServer;
-import io.ebean.annotation.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.stereotype.Repository;
+import org.springframework.stereotype.Service;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.*;
 
-/*("postgres")*/
-@Repository
-public class EmployeeDataAccessService implements IEmployeeDao {
+@Service
+public class EmployeeDataAccessService {
 
-    EbeanServer server = Ebean.getServer("db");
+    EbeanServer ebeanServer = Ebean.getServer("db");
 
-    @Override
-    @Transactional
+    @Autowired
+    EmployeeRepository employeeRepository;
+
+    @Autowired EmployeeDataAccessService (EmployeeRepository employeeRepository) {
+        this.employeeRepository = employeeRepository;
+    }
+
     public int insertEmployee(Employee employee) {
-        Employee employee1 = new Employee(UUID.randomUUID(), employee.getName(), employee.getRole(), employee.getCnic(), employee.getAge(), employee.getDob());
-        server.save(employee1);
+        /*Employee employee1 = new Employee(UUID.randomUUID(), employee.getName(), employee.getRole(), employee.getCnic(), employee.getAge(), employee.getDob());
+        server.save(employee1);*/
         return 1;
     }
 
-    @Override
-    @Transactional
-    public List<Employee> selectAllPeople() {
-        List<Employee> employees = server.find(Employee.class).findList();
-        return employees;
+    public List<Employee> selectAllEmployees() {
+        /*List<Employee> employees = ebeanServer.find(Employee.class).findList();*/
+        return null;
     }
 
-    @Override
-    @Transactional
-    public Optional<Employee> selectEmployeeById(UUID id) {
-        Employee employee = Ebean.find(Employee.class, id);
-        return Optional.ofNullable(employee);
+    public Optional<Employee> selectEmployeeById(Integer id) {
+        /*Employee employee = Ebean.find(Employee.class, id);*/
+        return null;
     }
 
-    @Override
-    @Transactional
-    public List<Employee> deleteEmployeeById(UUID id) {
-        Employee employee = Ebean.find(Employee.class, id);
-        server.delete(employee);
-        List<Employee> employees = server.find(Employee.class).findList();
-        return employees;
+    public List<Employee> deleteEmployeeById(Integer id) {
+        /*Employee employee = Ebean.find(Employee.class, id);
+        ebeanServer.delete(employee);
+        List<Employee> employees = ebeanServer.find(Employee.class).findList();*/
+        return null;
     }
 
-    @Override
-    @Transactional
     public int updateEmployeeById(Employee employee) {
-        String sql = "UPDATE employee set name = :name, role = :role, cnic = :cnic, age = :age, dob = :dob where id = :id";
+        /*String sql = "UPDATE employee set name = :name, role = :role, cnic = :cnic, age = :age, dob = :dob where id = :id";*/
 //        server.update(employee);
-        int row = server.sqlUpdate(sql)
+        /*int row = server.sqlUpdate(sql)
                 .setParameter("name",employee.getName())
                 .setParameter("role",employee.getRole())
                 .setParameter("cnic",employee.getCnic())
                 .setParameter("age",employee.getAge())
                 .setParameter("dob",employee.getDob())
                 .setParameter("id",employee.getId())
-                .execute();
-        return row;
+                .execute();*/
+
+        /*ebeanServer.update(employee);*/
+        return 1;
     }
 
     /*public final JdbcTemplate jdbcTemplate;*/

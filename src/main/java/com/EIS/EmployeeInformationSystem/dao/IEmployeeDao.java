@@ -4,7 +4,6 @@ import com.EIS.EmployeeInformationSystem.model.Employee;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.UUID;
 
 public interface IEmployeeDao {
     /*int insertEmployee(UUID id, Employee employee);
@@ -16,11 +15,11 @@ public interface IEmployeeDao {
 
     int insertEmployee(Employee employee);
 
-    List<Employee> selectAllPeople();
+    List<Employee> selectAllEmployees();
 
-    Optional<Employee> selectEmployeeById(UUID id);
+    Optional<Employee> selectEmployeeById(Integer id);
 
-    List<Employee> deleteEmployeeById(UUID id);
+    List<Employee> deleteEmployeeById(Integer id);
 
     int updateEmployeeById(Employee employee);
 }

@@ -1,3 +1,4 @@
 entity-packages: com.EIS.EmployeeInformationSystem.model
 transactional-packages: com.EIS.EmployeeInformationSystem
-querybean-packages: none
+querybean-packages: com.EIS.EmployeeInformationSystem
+profile-location: true
