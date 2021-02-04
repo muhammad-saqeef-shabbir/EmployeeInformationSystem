@@ -87,7 +87,11 @@
                         {data: 'role', title: 'Role'},
                         {data: 'cnic', title: 'Cnic'},
                         {data: 'age', title: 'Age'},
-                        {data: 'dob', title: 'Date of birth'},
+                        {
+                            data: 'dob', title: 'Date of birth', render: function (data) {
+                                return moment(data).format('MM/DD/YYYY');
+                            }
+                        },
                         {
                             data: 'id',
                             title: 'Action',
@@ -141,7 +145,7 @@
                 var data = response.data;
                 console.log('employee', data);
                 alert('Employee Added Successfully.');
-                ec.employee = {};
+                $scope.employee = {};
             });
         }
 
