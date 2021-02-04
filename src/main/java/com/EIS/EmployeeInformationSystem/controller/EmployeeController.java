@@ -1,4 +1,4 @@
-package com.EIS.EmployeeInformationSystem.api;
+package com.EIS.EmployeeInformationSystem.controller;
 
 import com.EIS.EmployeeInformationSystem.dao.EmployeeDataAccessService;
 import com.EIS.EmployeeInformationSystem.model.Employee;

@@ -5,39 +5,37 @@
 
 <div th:replace="common::header"></div>
 
-<div th:replace="common::jumbotron"></div>
-
-<table id="employeesTable" class="table">
-    <thead>
-    <tr>
-        <th scope="col">Id</th>
-        <th scope="col">Name</th>
-        <th scope="col">Role</th>
-        <th scope="col">Cnic</th>
-        <th scope="col">Age</th>
-        <th scope="col">Date of birth</th>
-        <th scope="col"></th>
-        <th scope="col"></th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr ng-repeat="employee in ec.employees">
-        <th scope="row">{{employee.id}}</th>
-        <td>{{employee.name}}</td>
-        <td>{{employee.role}}</td>
-        <td>{{employee.cnic}}</td>
-        <td>{{employee.age}}</td>
-        <td>{{employee.dob | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
-        <td><button type="button" class="btn btn-danger" ng-click="ec.deleteEmployee(employee.id)">Delete</button></td>
-        <td><button type="button" class="btn btn-dark" ng-click="ec.editEmployee(employee.id)">Edit</button></td>
-    </tr>
-    </tbody>
-</table>
+<div class="container">
+    <table id="employeesTable" class="table table-responsive table-bordered table-striped table-hover">
+        <thead>
+        <tr><th colspan="7" class="text-center">Employees</th></tr>
+        <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Role</th>
+            <th scope="col">Cnic</th>
+            <th scope="col">Age</th>
+            <th scope="col">Date of birth</th>
+            <th scope="col">Action</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr ng-repeat="employee in ec.employees">
+            <th scope="row">{{employee.id}}</th>
+            <td>{{employee.name}}</td>
+            <td>{{employee.role}}</td>
+            <td>{{employee.cnic}}</td>
+            <td>{{employee.age}}</td>
+            <td>{{employee.dob | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
+            <td>
+                <button type="button" class="btn btn-dark" ng-click="ec.editEmployee(employee.id)">Edit</button>
+                <button type="button" class="btn btn-danger" ng-click="ec.deleteEmployee(employee.id)">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
 
 <div th:replace="common::footer"></div>
-
-<script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
-<script src="../static/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
-<script type="text/javascript" src="../static/js/jquery.dataTables.js" th:src="@{/js/jquery.dataTables.js}"></script>
 </body>
 </html>

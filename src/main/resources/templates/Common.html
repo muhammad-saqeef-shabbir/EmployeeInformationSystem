@@ -3,8 +3,8 @@
 <head th:fragment="head">
     <meta charset="UTF-8"/>
     <title>Employee Information System</title>
-    <link rel="stylesheet" href="../static/css/bootstrap.css" th:href="@{/css/bootstrap.css}"/>
-    <link rel="stylesheet" href="../static/css/jquery.dataTables.css" th:href="@{/css/jquery.dataTables.css}"/>
+    <link rel="stylesheet" href="../static/bootstrap/css/bootstrap.css" th:href="@{/bootstrap/css/bootstrap.css}"/>
+    <link rel="stylesheet" href="../static/datatables/jquery_dataTables.css" th:href="@{/datatables/jquery_dataTables.css}"/>
     <script type="text/javascript" src="../static/js/angular.min.js" th:src="@{/js/angular.min.js}"></script>
     <script type="text/javascript" src="../static/app/app.module.js" th:src="@{/app/app.module.js}"></script>
     <script type="text/javascript" src="../static/app/employees.controller.js"
@@ -12,67 +12,43 @@
 </head>
 <body>
 <header th:fragment="header">
-    <nav class="navbar navbar-expand-lg navbar-dark fixed-top bg-primary">
-        <a class="navbar-brand" href="/Home/Index">EIS</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-                aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
+    <nav class="navbar navbar-default">
+        <div class="container-fluid">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/Home/Index">
+                    <span>
+                        <img src="../assets/logo/logo.png" th:src="@{/logo/logo.png}" width="30" height="30" class="d-inline-block align-top">
+                        Employee Information System
+                    </span>
+                </a>
+            </div>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <a class="nav-link" href="/Home/Index">Home <span class="sr-only">(current)</span></a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="/Home/Save">Create</a>
-                </li>
-                <!--<li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Dropdown
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Action</a>
-                        <a class="dropdown-item" href="#">Another action</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Something else here</a>
-                    </div>
-                </li>-->
-                <!--<li class="nav-item">
-                    <a class="nav-link disabled" href="#">Disabled</a>
-                </li>-->
-            </ul>
-            <!--<form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-            </form>-->
-        </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="/Home/Index">Home</a></li>
+                    <li><a href="/Home/Save">Create</a></li>
+                </ul>
+            </div><!-- /.navbar-collapse -->
+        </div><!-- /.container-fluid -->
     </nav>
 </header>
 
-<div class="jumbotron" th:fragment="jumbotron">
-    <h1 class="display-4">Employee Information System</h1>
-    <p class="lead">This is a platform for employees management.</p>
-    <hr class="my-4">
-    <p>It uses spring boot/mvc, thymeleaf, postgresql, bootstrap, spring initializer, java, tomcat, datatables js and angular js.</p>
-    <!--<p class="lead">
-        <a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
-    </p>-->
-    <!--<form action="/Home/Save" method="get" target="_blank">
-        <button type="submit" class="btn btn-primary">Create</button>
-    </form>-->
-    <a href="/Home/Save">Create</a>
-</div>
-
-<footer class="footer" th:fragment="footer"><!--style="position: absolute; bottom: 0"-->
-    <div>
-        <ul>
-            <li><a href="/Home/Index">Home</a></li>
-            <li><a href="/Home/Save">Create</a></li>
-        </ul>
+<footer class="footer bg-primary" th:fragment="footer" style="position: absolute; bottom: 0px; width: 100%; height: 40px;">
+    <div class="text-center">
         <p>&copy; 2020 developed by CITS</p>
     </div>
 </footer>
 
+<script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
+<script src="../static/bootstrap/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
+<script type="text/javascript" src="../static/datatables/jquery_dataTables.js" th:src="@{/js/jquery_dataTables.js}"></script>
 </body>
 </html>
