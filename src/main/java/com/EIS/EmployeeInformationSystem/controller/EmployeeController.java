@@ -1,6 +1,7 @@
 package com.EIS.EmployeeInformationSystem.controller;
 
 import com.EIS.EmployeeInformationSystem.dao.EmployeeDataAccessService;
+import com.EIS.EmployeeInformationSystem.dto.DataTableRequestDTO;
 import com.EIS.EmployeeInformationSystem.model.Employee;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.lang.NonNull;
@@ -46,12 +47,18 @@ public class EmployeeController {
     }*/
 
     @RequestMapping(value="/add", method = RequestMethod.POST)
-    public void addEmployee(@NonNull @RequestBody Employee employee) {
-        employeeDataAccessService.insertEmployee(employee);
+    public Employee addEmployee(@NonNull @RequestBody Employee employee) {
+        employee = employeeDataAccessService.insertEmployee(employee);
+        return employee;
     }
 
     @RequestMapping(value="/all", method = RequestMethod.GET)
     public List<Employee> getAllEmployees() {
+        return employeeDataAccessService.selectAllEmployees();
+    }
+
+    @RequestMapping(value="/listAllEmployees", method = RequestMethod.POST)
+    public List<Employee> listAllEmployees(@RequestBody DataTableRequestDTO dataTableRequestDTO) {
         return employeeDataAccessService.selectAllEmployees();
     }
 
@@ -67,7 +74,10 @@ public class EmployeeController {
     }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT)
-    public void updateEmployeeById(@NonNull @RequestBody Employee employeeToUpdate) {
-        employeeDataAccessService.updateEmployeeById(employeeToUpdate);
+    public Employee updateEmployeeById(@NonNull @RequestBody Employee employeeToUpdate) {
+        employeeToUpdate = employeeDataAccessService.updateEmployeeById(employeeToUpdate);
+        return employeeToUpdate;
     }
+
+
 }

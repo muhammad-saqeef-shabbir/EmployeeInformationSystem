@@ -15,6 +15,9 @@ public class BaseModel extends Model {
     //    @Version
     //    Long version;
 
+    @Column(columnDefinition = "BOOLEAN", name = "is_active", nullable = false)
+    Boolean active = Boolean.TRUE;
+
     @Basic(optional = false)
     @Column(columnDefinition = "TIMESTAMP", name = "created_date", updatable = false, nullable = false)
     Timestamp createdDate;
@@ -29,6 +32,14 @@ public class BaseModel extends Model {
 
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Boolean getActive() {
+        return active;
+    }
+
+    public void setActive(Boolean active) {
+        this.active = active;
     }
 
     public Timestamp getCreatedDate() {

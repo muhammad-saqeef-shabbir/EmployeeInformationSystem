@@ -1,5 +1,6 @@
 package com.EIS.EmployeeInformationSystem.dao;
 
+import com.EIS.EmployeeInformationSystem.dto.DataTableRequestDTO;
 import com.EIS.EmployeeInformationSystem.model.Employee;
 
 import java.util.List;
@@ -13,13 +14,15 @@ public interface IEmployeeDao {
         return insertEmployee(id, employee);
     }*/
 
-    int insertEmployee(Employee employee);
+    Employee insertEmployee(Employee employee);
 
     List<Employee> selectAllEmployees();
+
+    List<Employee> listAllEmployees(DataTableRequestDTO dataTableRequestDTO);
 
     Optional<Employee> selectEmployeeById(Integer id);
 
     List<Employee> deleteEmployeeById(Integer id);
 
-    int updateEmployeeById(Employee employee);
+    Employee updateEmployeeById(Employee employee);
 }

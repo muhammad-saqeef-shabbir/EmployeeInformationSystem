@@ -1,16 +1,21 @@
 package com.EIS.EmployeeInformationSystem.dao;
 
+import com.EIS.EmployeeInformationSystem.dto.DataTableRequestDTO;
 import com.EIS.EmployeeInformationSystem.model.Employee;
 import com.EIS.EmployeeInformationSystem.respository.EmployeeRepository;
 import io.ebean.Ebean;
 import io.ebean.EbeanServer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 
+import java.sql.Timestamp;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 @Service
-public class EmployeeDataAccessService {
+public class EmployeeDataAccessService implements IEmployeeDao {
 
     EbeanServer ebeanServer = Ebean.getServer("db");
 
@@ -21,43 +26,61 @@ public class EmployeeDataAccessService {
         this.employeeRepository = employeeRepository;
     }
 
-    public int insertEmployee(Employee employee) {
-        /*Employee employee1 = new Employee(UUID.randomUUID(), employee.getName(), employee.getRole(), employee.getCnic(), employee.getAge(), employee.getDob());
-        server.save(employee1);*/
-        return 1;
+    @Override
+    public Employee insertEmployee(Employee employee) {
+        Timestamp createdDate = new Timestamp(System.currentTimeMillis());
+        employee.setCreatedDate(createdDate);
+        ebeanServer.save(employee);
+        return employee;
     }
 
+    @Override
     public List<Employee> selectAllEmployees() {
-        /*List<Employee> employees = ebeanServer.find(Employee.class).findList();*/
-        return null;
+        return ebeanServer.find(Employee.class).findList();
     }
 
+    @Override
+    public List<Employee> listAllEmployees(DataTableRequestDTO dataTableRequestDTO) {
+        /*List<OrderByDTO> orderByDTOs = new ArrayList<>();
+
+        for(HashMap<String, String> orderBy: dataTableRequestDTO.getOrder())
+        {
+            String column = orderBy.get("column");
+            String sortingType = orderBy.get("dir");
+
+            OrderByDTO orderByDTO = new OrderByDTO(column, sortingType);
+
+            orderByDTOs.add(orderByDTO);
+        }
+
+        String searchTerm = "";
+
+        if(StringUtils.hasText(dataTableRequestDTO.getSearch().get("value")))
+        {
+            searchTerm = "%" + dataTableRequestDTO.getSearch().get("value") + "%";
+        }*/
+
+        /*List<EmployeeDAO> employeeDAOs = iDaoFactory.getEmployeeDAO().findAllDTOsForDataTable(orderByDTOs, dataTableRequestDTO.getStart(), dataTableRequestDTO.getLength(), searchTerm);*/
+
+        return ebeanServer.find(Employee.class).findList();
+    }
+
+    @Override
     public Optional<Employee> selectEmployeeById(Integer id) {
-        /*Employee employee = Ebean.find(Employee.class, id);*/
-        return null;
+        return Optional.ofNullable(Ebean.find(Employee.class, id));
     }
 
+    @Override
     public List<Employee> deleteEmployeeById(Integer id) {
-        /*Employee employee = Ebean.find(Employee.class, id);
+        Employee employee = Ebean.find(Employee.class, id);
         ebeanServer.delete(employee);
-        List<Employee> employees = ebeanServer.find(Employee.class).findList();*/
-        return null;
+        return ebeanServer.find(Employee.class).findList();
     }
 
-    public int updateEmployeeById(Employee employee) {
-        /*String sql = "UPDATE employee set name = :name, role = :role, cnic = :cnic, age = :age, dob = :dob where id = :id";*/
-//        server.update(employee);
-        /*int row = server.sqlUpdate(sql)
-                .setParameter("name",employee.getName())
-                .setParameter("role",employee.getRole())
-                .setParameter("cnic",employee.getCnic())
-                .setParameter("age",employee.getAge())
-                .setParameter("dob",employee.getDob())
-                .setParameter("id",employee.getId())
-                .execute();*/
-
-        /*ebeanServer.update(employee);*/
-        return 1;
+    @Override
+    public Employee updateEmployeeById(Employee employee) {
+        ebeanServer.update(employee);
+        return employee;
     }
 
     /*public final JdbcTemplate jdbcTemplate;*/

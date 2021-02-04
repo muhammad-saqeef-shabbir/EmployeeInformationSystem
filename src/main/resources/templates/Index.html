@@ -10,32 +10,48 @@
         <thead>
         <tr><th colspan="7" class="text-center">Employees</th></tr>
         <tr>
-            <th scope="col">Id</th>
-            <th scope="col">Name</th>
-            <th scope="col">Role</th>
-            <th scope="col">Cnic</th>
-            <th scope="col">Age</th>
-            <th scope="col">Date of birth</th>
-            <th scope="col">Action</th>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Cnic</th>
+            <th>Age</th>
+            <th>Date of birth</th>
+            <th>Action</th>
         </tr>
         </thead>
+        <tfoot>
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+            <th>Role</th>
+            <th>Cnic</th>
+            <th>Age</th>
+            <th>Date of birth</th>
+            <th>Action</th>
+        </tr>
+        </tfoot>
         <tbody>
         <tr ng-repeat="employee in ec.employees">
-            <th scope="row">{{employee.id}}</th>
+            <th>{{employee.id}}</th>
             <td>{{employee.name}}</td>
             <td>{{employee.role}}</td>
             <td>{{employee.cnic}}</td>
             <td>{{employee.age}}</td>
-            <td>{{employee.dob | date:'yyyy-MM-dd HH:mm:ss Z'}}</td>
-            <td>
-                <button type="button" class="btn btn-dark" ng-click="ec.editEmployee(employee.id)">Edit</button>
+            <td>{{employee.dob | date:'yyyy-MM-dd'}}</td>
+           <!-- <td>
+                <button type="button" class="btn btn-primary" ng-click="ec.editEmployee(employee.id)">Edit</button>
                 <button type="button" class="btn btn-danger" ng-click="ec.deleteEmployee(employee.id)">Delete</button>
-            </td>
+            </td>-->
         </tr>
         </tbody>
     </table>
 </div>
 
 <div th:replace="common::footer"></div>
+
+<script src="../static/jquery/jquery.js" th:src="@{/jquery/jquery.js}"></script>
+<script src="../static/bootstrap/js/bootstrap.js" th:src="@{/bootstrap/js/bootstrap.js}"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../static/datatables/jquery_dataTables.js" th:src="@{/datatables/jquery_dataTables.js}"></script>
 </body>
 </html>

@@ -11,48 +11,50 @@
         <p>This is a platform for employees management.</p>
         <p>It uses spring boot, thymeleaf, postgreSQL, bootstrap, spring initializer, java, tomcat, datatables and
             angular.</p>
-        <a href="/Home/Save">Create</a>
     </div>
 </div>
 
 <div class="container">
-    <form class="form-horizontal">
-        <h2>Create Employee</h2>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="name">Name</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="employee.name">
+    <form>
+        <div class="row">
+            <h2>Create Employee</h2>
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Enter name" ng-model="employee.name">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="role">Role</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="role" placeholder="Enter role" ng-model="employee.role">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="role">Role</label>
+                    <input type="text" class="form-control" id="role" placeholder="Enter role" ng-model="employee.role">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="role">cnic</label>
-            <div class="col-sm-10">
-                <input type="text" class="form-control" id="cnic" placeholder="Enter cnic" ng-model="employee.cnic">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="role">cnic</label>
+                    <input type="text" class="form-control" id="cnic" placeholder="Enter cnic" ng-model="employee.cnic">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="role">Age</label>
-            <div class="col-sm-10">
-                <input type="number" class="form-control" id="age" min="0" max="200" placeholder="Enter age"
-                       ng-model="employee.age">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="role">Age</label>
+                    <input type="number" class="form-control" id="age" min="0" max="200" placeholder="Enter age"
+                           ng-model="employee.age">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <label class="control-label col-sm-2" for="dob">Date of birth</label>
-            <div class="col-sm-10">
-                <input type="date" class="form-control" id="dob" placeholder="Enter date of birth"
-                       ng-model="employee.dob">
+            <div class="col-lg-3">
+                <div class="form-group">
+                    <label for="dob">Date of birth</label>
+                    <input type="date" class="form-control" id="dob" placeholder="Enter date of birth"
+                           ng-model="employee.dob">
+                </div>
             </div>
-        </div>
-        <div class="form-group">
-            <div class="col-sm-offset-2 col-sm-10">
-                <button type="button" class="btn btn-primary" ng-click="ec.addEmployee(employee)">Create</button>
+            <div class="col-lg-4" style="margin-top: 24px;">
+                <div class="form-group">
+                    <button type="button" class="btn btn-success" ng-click="ec.addEmployee(employee)">Save</button>
+                    <button type="button" class="btn btn-primary" ng-click="ec.goToHome()">Home</button>
+                </div>
             </div>
         </div>
     </form>
@@ -60,9 +62,10 @@
 
 <div th:replace="common::footer"></div>
 
-<script src="../static/js/jquery.js" th:src="@{/js/jquery.js}"></script>
-<script src="../static/js/bootstrap.js" th:src="@{/js/bootstrap.js}"></script>
-<script type="text/javascript" src="../static/js/jquery.dataTables.js" th:src="@{/js/jquery.dataTables.js}"></script>
+<script src="../static/jquery/jquery.js" th:src="@{/jquery/jquery.js}"></script>
+<script src="../static/bootstrap/js/bootstrap.js" th:src="@{/bootstrap/js/bootstrap.js}"></script>
+<script src="../static/bootstrap/js/bootstrap.min.js" th:src="@{/bootstrap/js/bootstrap.min.js}"></script>
+<script type="text/javascript" src="../static/datatables/jquery_dataTables.js" th:src="@{/datatables/jquery_dataTables.js}"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.10/jquery.mask.js"></script>
 <script type="text/javascript">
     $(document).ready(function () {
