@@ -130,6 +130,7 @@
             var url = "/api/v1/employee/delete/" + id;
             $http.get(url).then(function (response) {
                 ec.employees = response.data;
+                location.href = '/Home/Index';
             });
         }
 
@@ -165,7 +166,6 @@
                 var data = response.data;
                 console.log('employee', data);
                 alert('Employee Updated Successfully.');
-                ec.employee = {};
             });
         }
 
